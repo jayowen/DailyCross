@@ -167,6 +167,122 @@ export class MemStorage implements IStorage {
     this.createEvent(sundayService);
     this.createEvent(bibleStudy);
     this.createEvent(outreach);
+    
+    // Create some churches
+    const graceChurch: InsertChurch = {
+      name: "Grace Community Church",
+      description: "A vibrant community of believers dedicated to sharing the love of Christ through worship, teaching, and community service.",
+      location: "Atlanta, GA",
+      logoUrl: "https://placehold.co/400x400/333/FFF?text=GCC",
+      websiteUrl: "https://www.gracecommunity.church",
+      denomination: "Non-denominational",
+      numberOfCampuses: 3,
+      leadPastorName: "Dr. Michael Johnson",
+      leadPastorBio: "Dr. Johnson has been leading Grace Community Church for over 15 years. He holds a doctorate in Biblical Theology and is dedicated to teaching God's Word with clarity and relevance.",
+      leadPastorImageUrl: "https://placehold.co/400x400/333/FFF?text=MJ",
+      streamingUrl: "https://www.gracecommunity.church/live",
+      streamingDays: ["Sunday"],
+      streamingTimes: ["9:00 AM", "11:00 AM", "6:00 PM"]
+    };
+    
+    const livingWaters: InsertChurch = {
+      name: "Living Waters Fellowship",
+      description: "A family-focused church committed to helping people grow in their faith journey through Bible-based teaching and discipleship.",
+      location: "Nashville, TN",
+      logoUrl: "https://placehold.co/400x400/333/FFF?text=LWF",
+      websiteUrl: "https://www.livingwatersfellowship.org",
+      denomination: "Baptist",
+      numberOfCampuses: 1,
+      leadPastorName: "Pastor James Wilson",
+      leadPastorBio: "Pastor Wilson founded Living Waters Fellowship in 2005 with a vision to create a church that feels like family. His practical teaching style makes the Bible accessible to people of all backgrounds.",
+      leadPastorImageUrl: "https://placehold.co/400x400/333/FFF?text=JW",
+      streamingUrl: "https://www.livingwatersfellowship.org/livestream",
+      streamingDays: ["Sunday", "Wednesday"],
+      streamingTimes: ["10:30 AM", "7:00 PM"]
+    };
+    
+    const newLifeChurch: InsertChurch = {
+      name: "New Life Church",
+      description: "A multicultural church with a passion for worship, community engagement, and global missions.",
+      location: "Houston, TX",
+      logoUrl: "https://placehold.co/400x400/333/FFF?text=NLC",
+      websiteUrl: "https://www.newlifechurch.com",
+      denomination: "Evangelical",
+      numberOfCampuses: 5,
+      leadPastorName: "Pastor Sarah Reynolds",
+      leadPastorBio: "Pastor Sarah has led New Life Church for 10 years, bringing a fresh perspective to biblical teaching. Her heart for social justice and community transformation has inspired the church's numerous outreach programs.",
+      leadPastorImageUrl: "https://placehold.co/400x400/333/FFF?text=SR",
+      streamingUrl: "https://www.newlifechurch.com/watch",
+      streamingDays: ["Sunday", "Tuesday", "Thursday"],
+      streamingTimes: ["8:00 AM", "10:30 AM", "7:00 PM"]
+    };
+    
+    const church1 = this.createChurch(graceChurch);
+    const church2 = this.createChurch(livingWaters);
+    const church3 = this.createChurch(newLifeChurch);
+    
+    // Add campuses for Grace Community Church
+    this.createCampus({
+      churchId: 1,
+      name: "Downtown Campus",
+      address: "123 Main Street",
+      city: "Atlanta",
+      state: "GA",
+      zipCode: "30303",
+      serviceSchedule: ["Sunday 9:00 AM", "Sunday 11:00 AM", "Wednesday 7:00 PM"]
+    });
+    
+    this.createCampus({
+      churchId: 1,
+      name: "North Campus",
+      address: "456 Northridge Pkwy",
+      city: "Roswell",
+      state: "GA",
+      zipCode: "30076",
+      serviceSchedule: ["Sunday 9:30 AM", "Sunday 11:30 AM"]
+    });
+    
+    this.createCampus({
+      churchId: 1,
+      name: "East Campus",
+      address: "789 Eastlake Blvd",
+      city: "Decatur",
+      state: "GA",
+      zipCode: "30030",
+      serviceSchedule: ["Sunday 10:00 AM", "Thursday 7:00 PM"]
+    });
+    
+    // Add campus for Living Waters
+    this.createCampus({
+      churchId: 2,
+      name: "Main Campus",
+      address: "321 Riverfront Ave",
+      city: "Nashville",
+      state: "TN",
+      zipCode: "37203",
+      serviceSchedule: ["Sunday 10:30 AM", "Wednesday 7:00 PM"]
+    });
+    
+    // Add campuses for New Life Church
+    this.createCampus({
+      churchId: 3,
+      name: "Central Campus",
+      address: "555 New Life Way",
+      city: "Houston",
+      state: "TX",
+      zipCode: "77002",
+      serviceSchedule: ["Sunday 8:00 AM", "Sunday 10:30 AM", "Tuesday 7:00 PM"]
+    });
+    
+    this.createCampus({
+      churchId: 3,
+      name: "West Campus",
+      address: "888 Westheimer Rd",
+      city: "Houston",
+      state: "TX",
+      zipCode: "77056",
+      serviceSchedule: ["Sunday 9:00 AM", "Sunday 11:00 AM", "Thursday 7:00 PM"]
+    });
   }
 
   // User methods

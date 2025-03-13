@@ -7,7 +7,9 @@ import {
   insertPrayerRequestSchema, 
   insertDiscussionSchema,
   insertContentSchema,
-  insertEventSchema
+  insertEventSchema,
+  insertChurchSchema,
+  insertCampusSchema
 } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -215,6 +217,75 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(user);
     } catch (error) {
       res.status(500).json({ error: "Failed to update user progress" });
+    }
+  });
+
+  // Church Directory routes
+  app.get("/api/churches", async (req, res) => {
+    try {
+      const churches = await storage.getAllChurches();
+      res.json(churches);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch churches" });
+    }
+  });
+
+  app.get("/api/churches/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const church = await storage.getChurch(parseInt(id));
+      
+      if (!church) {
+        return res.status(404).json({ error: "Church not found" });
+      }
+      
+      res.json(church);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch church" });
+    }
+  });
+
+  app.post("/api/churches", async (req, res) => {
+    try {
+      if (!req.isAuthenticated() || req.user.role !== "admin") {
+        return res.status(403).json({ error: "Unauthorized" });
+      }
+      
+      const validatedData = insertChurchSchema.parse(req.body);
+      const church = await storage.createChurch(validatedData);
+      res.status(201).json(church);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors });
+      }
+      res.status(500).json({ error: "Failed to create church" });
+    }
+  });
+
+  app.get("/api/churches/:id/campuses", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const campuses = await storage.getCampuses(parseInt(id));
+      res.json(campuses);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch campuses" });
+    }
+  });
+
+  app.post("/api/campuses", async (req, res) => {
+    try {
+      if (!req.isAuthenticated() || req.user.role !== "admin") {
+        return res.status(403).json({ error: "Unauthorized" });
+      }
+      
+      const validatedData = insertCampusSchema.parse(req.body);
+      const campus = await storage.createCampus(validatedData);
+      res.status(201).json(campus);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors });
+      }
+      res.status(500).json({ error: "Failed to create campus" });
     }
   });
 
