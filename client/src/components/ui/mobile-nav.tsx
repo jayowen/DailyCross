@@ -70,7 +70,7 @@ export function MobileNav() {
                   <Link href="/community">
                     <a onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 text-gray-300 hover:text-amber-500 transition-colors">
                       <span className="material-icons text-amber-600 mb-2">groups</span>
-                      <span className="text-sm">Community</span>
+                      <span className="text-sm">Church Directory</span>
                     </a>
                   </Link>
                   <Link href="/my-growth">

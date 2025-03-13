@@ -54,7 +54,7 @@ export function Header() {
           </Link>
           <Link href="/community">
             <a className={`font-inter font-medium ${location === '/community' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
-              Community
+              Church Directory
             </a>
           </Link>
         </nav>

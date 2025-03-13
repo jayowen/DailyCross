@@ -137,8 +137,8 @@ export default function HomePage() {
                   iconColor="success"
                 />
                 <StatsCard
-                  title="Community Activity"
-                  value="5 interactions"
+                  title="Church Interactions"
+                  value="5 connections"
                   icon="groups"
                   iconColor="accent"
                 />
@@ -196,10 +196,10 @@ export default function HomePage() {
               </div>
             </section>
             
-            {/* Community Section */}
+            {/* Church Directory Section */}
             <section className="mb-8">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="section-header">Community Activity</h2>
+                <h2 className="section-header">Church Directory Activity</h2>
                 <Link href="/community">
                   <a className="text-amber-600 text-sm font-medium hover:text-amber-500 transition-colors">View All</a>
                 </Link>

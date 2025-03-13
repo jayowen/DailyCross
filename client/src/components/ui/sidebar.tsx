@@ -25,7 +25,7 @@ export function Sidebar() {
   const mainNav = [
     { path: "/", icon: "home", label: "Home" },
     { path: "/my-growth", icon: "person", label: "My Growth" },
-    { path: "/community", icon: "groups", label: "Community" }
+    { path: "/community", icon: "groups", label: "Church Directory" }
   ];
 
   const contentNav = [
