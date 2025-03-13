@@ -177,7 +177,7 @@ export default function AdminPage() {
           <div className="max-w-5xl mx-auto">
             <div className="mb-6">
               <h1 className="font-merriweather text-2xl md:text-3xl font-bold mb-4">Admin Dashboard</h1>
-              <p className="text-gray-600 mb-6">Manage content, events, and users for the Four12 community.</p>
+              <p className="text-gray-600 mb-6">Manage content, events, and users for the DailyCross.com community.</p>
               
               <Tabs defaultValue="content">
                 <TabsList className="mb-4">

@@ -19,17 +19,17 @@ export default function ChurchDirectoryPage() {
 
   // Get unique denominations and locations for filters
   const denominations = churches 
-    ? [...new Set(churches.filter(church => church.denomination).map(church => church.denomination))]
+    ? Array.from(new Set(churches.filter(church => church.denomination).map(church => church.denomination)))
     : [];
     
   const locations = churches 
-    ? [...new Set(churches.map(church => {
+    ? Array.from(new Set(churches.map(church => {
         // Extract just the city, state part from the location
         const locationParts = church.location.split(",");
         return locationParts.length > 1 
           ? `${locationParts[0].trim()}, ${locationParts[1].trim()}`
           : church.location;
-      }))]
+      })))
     : [];
 
   // Filter churches based on search term and filters
@@ -63,7 +63,7 @@ export default function ChurchDirectoryPage() {
           <div className="max-w-6xl mx-auto">
             <div className="mb-6">
               <h1 className="font-merriweather text-2xl md:text-3xl font-bold mb-2">Church Directory</h1>
-              <p className="text-gray-600 mb-6">Find and connect with Four12 partnering churches in your area.</p>
+              <p className="text-gray-600 mb-6">Find and connect with DailyCross.com partnering churches in your area.</p>
               
               {/* Search and filters */}
               <div className="mb-6 bg-white p-4 rounded-lg shadow-sm">
