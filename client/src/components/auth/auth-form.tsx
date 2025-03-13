@@ -62,32 +62,53 @@ export function AuthForm() {
   };
   
   return (
-    <Tabs defaultValue="login" value={tab} onValueChange={(value) => setTab(value as "login" | "register")}>
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-2xl font-merriweather text-center mb-2">Four12 Community</CardTitle>
-          <CardDescription className="text-center">
-            {tab === "login" ? "Sign in to your account" : "Create a new account"}
+    <Tabs 
+      defaultValue="login" 
+      value={tab} 
+      onValueChange={(value) => setTab(value as "login" | "register")}
+      className="w-full max-w-md"
+    >
+      <Card className="w-full border-0 bg-transparent shadow-none">
+        <CardHeader className="px-0">
+          <CardTitle className="text-3xl font-merriweather text-center mb-3 text-white">
+            Welcome to <span className="text-amber-600">Four12</span>
+          </CardTitle>
+          <CardDescription className="text-center text-gray-400 text-base mb-5">
+            {tab === "login" ? "Sign in to access your account" : "Join the Four12 community today"}
           </CardDescription>
-          <TabsList className="grid grid-cols-2 w-full mt-4">
-            <TabsTrigger value="login">Login</TabsTrigger>
-            <TabsTrigger value="register">Register</TabsTrigger>
+          <TabsList className="grid grid-cols-2 w-full bg-gray-800/70 border border-gray-700">
+            <TabsTrigger 
+              value="login" 
+              className="data-[state=active]:bg-amber-600 data-[state=active]:text-white"
+            >
+              Login
+            </TabsTrigger>
+            <TabsTrigger 
+              value="register" 
+              className="data-[state=active]:bg-amber-600 data-[state=active]:text-white"
+            >
+              Register
+            </TabsTrigger>
           </TabsList>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-0">
           <TabsContent value="login" className="mt-0">
             <Form {...loginForm}>
-              <form onSubmit={loginForm.handleSubmit(onLoginSubmit)} className="space-y-4">
+              <form onSubmit={loginForm.handleSubmit(onLoginSubmit)} className="space-y-5">
                 <FormField
                   control={loginForm.control}
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel className="text-gray-300">Username</FormLabel>
                       <FormControl>
-                        <Input placeholder="username" {...field} />
+                        <Input 
+                          placeholder="Enter your username" 
+                          className="bg-gray-800/60 border-gray-700 text-white focus:border-amber-600/80 focus:ring-amber-600/10 h-11" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-amber-500" />
                     </FormItem>
                   )}
                 />
@@ -96,17 +117,22 @@ export function AuthForm() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="text-gray-300">Password</FormLabel>
                       <FormControl>
-                        <Input type="password" placeholder="********" {...field} />
+                        <Input 
+                          type="password" 
+                          placeholder="Enter your password" 
+                          className="bg-gray-800/60 border-gray-700 text-white focus:border-amber-600/80 focus:ring-amber-600/10 h-11" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-amber-500" />
                     </FormItem>
                   )}
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90"
+                  className="w-full bg-amber-600 hover:bg-amber-700 transition-colors h-12 mt-6 text-white font-semibold"
                   disabled={loginMutation.isPending}
                 >
                   {loginMutation.isPending ? "Signing In..." : "Sign In"}
@@ -117,17 +143,21 @@ export function AuthForm() {
           
           <TabsContent value="register" className="mt-0">
             <Form {...registerForm}>
-              <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)} className="space-y-4">
+              <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)} className="space-y-5">
                 <FormField
                   control={registerForm.control}
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel className="text-gray-300">Username</FormLabel>
                       <FormControl>
-                        <Input placeholder="username" {...field} />
+                        <Input 
+                          placeholder="Choose a username" 
+                          className="bg-gray-800/60 border-gray-700 text-white focus:border-amber-600/80 focus:ring-amber-600/10 h-11" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-amber-500" />
                     </FormItem>
                   )}
                 />
@@ -136,11 +166,15 @@ export function AuthForm() {
                   name="displayName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel className="text-gray-300">Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" {...field} />
+                        <Input 
+                          placeholder="Enter your full name" 
+                          className="bg-gray-800/60 border-gray-700 text-white focus:border-amber-600/80 focus:ring-amber-600/10 h-11" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-amber-500" />
                     </FormItem>
                   )}
                 />
@@ -149,11 +183,15 @@ export function AuthForm() {
                   name="church"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Church (Optional)</FormLabel>
+                      <FormLabel className="text-gray-300">Church (Optional)</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your church name" {...field} />
+                        <Input 
+                          placeholder="Your church name" 
+                          className="bg-gray-800/60 border-gray-700 text-white focus:border-amber-600/80 focus:ring-amber-600/10 h-11" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-amber-500" />
                     </FormItem>
                   )}
                 />
@@ -162,17 +200,22 @@ export function AuthForm() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="text-gray-300">Password</FormLabel>
                       <FormControl>
-                        <Input type="password" placeholder="********" {...field} />
+                        <Input 
+                          type="password" 
+                          placeholder="Choose a secure password" 
+                          className="bg-gray-800/60 border-gray-700 text-white focus:border-amber-600/80 focus:ring-amber-600/10 h-11" 
+                          {...field} 
+                        />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-amber-500" />
                     </FormItem>
                   )}
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90"
+                  className="w-full bg-amber-600 hover:bg-amber-700 transition-colors h-12 mt-6 text-white font-semibold"
                   disabled={registerMutation.isPending}
                 >
                   {registerMutation.isPending ? "Creating Account..." : "Create Account"}
