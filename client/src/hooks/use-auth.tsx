@@ -45,7 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLocation("/");
       toast({
         title: "Logged in successfully",
-        description: `Welcome back to The Daily Blade, ${user.displayName}!`,
+        description: `Welcome back to DailyCross.com, ${user.displayName}!`,
       });
     },
     onError: (error: Error) => {
@@ -67,7 +67,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLocation("/");
       toast({
         title: "Account created",
-        description: `Welcome to The Daily Blade, ${user.displayName}!`,
+        description: `Welcome to DailyCross.com, ${user.displayName}!`,
       });
     },
     onError: (error: Error) => {
@@ -118,7 +118,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLocation("/");
     toast({
       title: "Demo mode activated",
-      description: "Welcome to The Daily Blade! You're browsing as a guest."
+      description: "Welcome to DailyCross.com! You're browsing as a guest."
     });
   };
 
