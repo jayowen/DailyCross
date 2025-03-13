@@ -6,6 +6,9 @@ import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/home-page";
 import AuthPage from "@/pages/auth-page";
 import SermonsPage from "@/pages/sermons-page";
+import StoriesPage from "@/pages/stories-page";
+import WorshipPage from "@/pages/worship-page";
+import PodcastsPage from "@/pages/podcasts-page";
 import CommunityPage from "@/pages/community-page";
 import BibleStudyPage from "@/pages/bible-study-page";
 import MyGrowthPage from "@/pages/my-growth-page";
@@ -18,6 +21,9 @@ function Router() {
     <Switch>
       <ProtectedRoute path="/" component={HomePage} />
       <ProtectedRoute path="/sermons" component={SermonsPage} />
+      <ProtectedRoute path="/stories" component={StoriesPage} />
+      <ProtectedRoute path="/worship" component={WorshipPage} />
+      <ProtectedRoute path="/podcasts" component={PodcastsPage} />
       <ProtectedRoute path="/community" component={CommunityPage} />
       <ProtectedRoute path="/bible-study" component={BibleStudyPage} />
       <ProtectedRoute path="/my-growth" component={MyGrowthPage} />

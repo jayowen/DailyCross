@@ -18,47 +18,52 @@ export function Header() {
   };
 
   return (
-    <header className="bg-primary text-white shadow-md">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+    <header className="bg-gray-900 text-white shadow-md border-b border-amber-700/30">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <span className="material-icons mr-2">church</span>
-          <h1 className="text-xl font-merriweather font-bold">Four12</h1>
+          <span className="material-icons mr-2 text-amber-600">church</span>
+          <h1 className="text-xl font-merriweather font-bold text-amber-50">Four12</h1>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-10">
           <Link href="/">
-            <a className={`font-inter font-medium ${location === '/' ? 'text-accent' : 'hover:text-accent transition-colors'}`}>
+            <a className={`font-inter font-medium ${location === '/' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
               Home
             </a>
           </Link>
+          <Link href="/stories">
+            <a className={`font-inter font-medium ${location === '/stories' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
+              Stories
+            </a>
+          </Link>
           <Link href="/sermons">
-            <a className={`font-inter font-medium ${location === '/sermons' ? 'text-accent' : 'hover:text-accent transition-colors'}`}>
+            <a className={`font-inter font-medium ${location === '/sermons' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
               Sermons
             </a>
           </Link>
+          <Link href="/worship">
+            <a className={`font-inter font-medium ${location === '/worship' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
+              Worship
+            </a>
+          </Link>
+          <Link href="/podcasts">
+            <a className={`font-inter font-medium ${location === '/podcasts' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
+              Podcasts
+            </a>
+          </Link>
           <Link href="/community">
-            <a className={`font-inter font-medium ${location === '/community' ? 'text-accent' : 'hover:text-accent transition-colors'}`}>
+            <a className={`font-inter font-medium ${location === '/community' ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500 transition-colors'}`}>
               Community
-            </a>
-          </Link>
-          <Link href="/bible-study">
-            <a className={`font-inter font-medium ${location === '/bible-study' ? 'text-accent' : 'hover:text-accent transition-colors'}`}>
-              Bible Study
-            </a>
-          </Link>
-          <Link href="/my-growth">
-            <a className={`font-inter font-medium ${location === '/my-growth' ? 'text-accent' : 'hover:text-accent transition-colors'}`}>
-              My Growth
             </a>
           </Link>
         </nav>
 
         {/* User Menu */}
         <div className="flex items-center space-x-4">
-          <button className="flex items-center text-white hover:text-accent transition-colors">
+          <button className="flex items-center text-gray-300 hover:text-amber-500 transition-colors">
             <span className="material-icons">notifications</span>
-            <span className="bg-accent text-white text-xs rounded-full h-4 w-4 flex items-center justify-center -mt-2 -ml-1">3</span>
+            <span className="bg-amber-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center -mt-2 -ml-1">3</span>
           </button>
 
           <DropdownMenu>

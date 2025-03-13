@@ -1,36 +1,98 @@
 import { Link, useLocation } from "wouter";
+import { 
+  Sheet,
+  SheetContent,
+  SheetTrigger
+} from "@/components/ui/sheet";
+import { useState } from "react";
+import { useAuth } from "@/hooks/use-auth";
 
 export function MobileNav() {
   const [location] = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAuth();
+
+  // Helper function to check if a route is active
+  const isActive = (path: string) => location === path;
+
+  const navItems = [
+    { path: "/", icon: "home", label: "Home" },
+    { path: "/stories", icon: "auto_stories", label: "Stories" },
+    { path: "/sermons", icon: "menu_book", label: "Sermons" },
+    { path: "/worship", icon: "music_note", label: "Worship" },
+    { path: "/podcasts", icon: "podcasts", label: "Podcasts" }
+  ];
 
   return (
-    <nav className="md:hidden bg-white border-t border-gray-200 fixed bottom-0 left-0 right-0 z-50">
-      <div className="flex justify-around items-center py-2">
-        <Link href="/">
-          <a className={`flex flex-col items-center px-3 py-2 ${location === '/' ? 'text-accent' : 'text-gray-500'}`}>
-            <span className="material-icons">home</span>
-            <span className="text-xs mt-1">Home</span>
-          </a>
-        </Link>
-        <Link href="/sermons">
-          <a className={`flex flex-col items-center px-3 py-2 ${location === '/sermons' ? 'text-accent' : 'text-gray-500'}`}>
-            <span className="material-icons">menu_book</span>
-            <span className="text-xs mt-1">Content</span>
-          </a>
-        </Link>
-        <Link href="/community">
-          <a className={`flex flex-col items-center px-3 py-2 ${location === '/community' ? 'text-accent' : 'text-gray-500'}`}>
-            <span className="material-icons">groups</span>
-            <span className="text-xs mt-1">Community</span>
-          </a>
-        </Link>
-        <Link href="/my-growth">
-          <a className={`flex flex-col items-center px-3 py-2 ${location === '/my-growth' ? 'text-accent' : 'text-gray-500'}`}>
-            <span className="material-icons">person</span>
-            <span className="text-xs mt-1">Profile</span>
-          </a>
-        </Link>
-      </div>
-    </nav>
+    <>
+      {/* Main Navigation Bar */}
+      <nav className="md:hidden bg-white border-t border-gray-200 fixed bottom-0 left-0 right-0 z-40">
+        <div className="flex justify-around items-center py-2">
+          {navItems.slice(0, 4).map((item) => (
+            <Link key={item.path} href={item.path}>
+              <a className={`flex flex-col items-center px-2 py-2 ${isActive(item.path) ? 'text-primary' : 'text-gray-500'}`}>
+                <span className="material-icons text-[20px]">{item.icon}</span>
+                <span className="text-xs mt-1">{item.label}</span>
+              </a>
+            </Link>
+          ))}
+
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild>
+              <button className="flex flex-col items-center px-2 py-2 text-gray-500">
+                <span className="material-icons text-[20px]">more_horiz</span>
+                <span className="text-xs mt-1">More</span>
+              </button>
+            </SheetTrigger>
+            <SheetContent side="bottom" className="h-[60vh] pt-0 rounded-t-xl">
+              <div className="pt-6 pb-12">
+                <div className="flex items-center justify-between mb-6 border-b pb-4">
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-3">
+                      <span className="text-white font-semibold">
+                        {user?.displayName.split(' ').map(n => n[0]).join('').toUpperCase()}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="font-medium">{user?.displayName}</h3>
+                      <p className="text-sm text-gray-500">{user?.church || 'Member'}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4">
+                  <Link href="/podcasts">
+                    <a onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                      <span className="material-icons text-primary mb-2">podcasts</span>
+                      <span className="text-sm">Podcasts</span>
+                    </a>
+                  </Link>
+                  <Link href="/community">
+                    <a onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                      <span className="material-icons text-primary mb-2">groups</span>
+                      <span className="text-sm">Community</span>
+                    </a>
+                  </Link>
+                  <Link href="/my-growth">
+                    <a onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                      <span className="material-icons text-primary mb-2">person</span>
+                      <span className="text-sm">Profile</span>
+                    </a>
+                  </Link>
+                  {user?.role === 'admin' && (
+                    <Link href="/admin">
+                      <a onClick={() => setIsMenuOpen(false)} className="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+                        <span className="material-icons text-primary mb-2">admin_panel_settings</span>
+                        <span className="text-sm">Admin</span>
+                      </a>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </nav>
+    </>
   );
 }
