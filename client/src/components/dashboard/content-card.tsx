@@ -61,6 +61,8 @@ export function ContentCard({
     switch (type) {
       case "sermon":
       case "devotional":
+      case "podcast":
+      case "worship":
         return (
           <div className="flex items-center text-xs text-gray-500">
             <span className="material-icons text-sm mr-1">schedule</span>

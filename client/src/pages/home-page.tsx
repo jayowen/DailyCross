@@ -55,6 +55,10 @@ export default function HomePage() {
         return 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
       case 'devotional':
         return 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
+      case 'podcast':
+        return 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
+      case 'worship':
+        return 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
       default:
         return 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
     }
@@ -101,7 +105,7 @@ export default function HomePage() {
             <section className="mb-8">
               <div className="p-6 bg-gray-900 rounded-lg text-white border border-amber-700/20 shadow-md mb-4">
                 <h1 className="text-2xl md:text-3xl font-bold mb-2 text-amber-50">
-                  Welcome to The Daily Blade, {user?.displayName.split(' ')[0]}!
+                  Welcome to DailyCross.com, {user?.displayName.split(' ')[0]}!
                 </h1>
                 <p className="text-gray-300">Continue your spiritual journey where you left off.</p>
                 <div className="mt-4 flex flex-wrap gap-3">
@@ -178,18 +182,18 @@ export default function HomePage() {
                       duration={32}
                     />
                     <ContentCard
-                      title="The Book of James: Faith in Action"
-                      description="A 5-part study on living out your faith through practical actions and wisdom."
-                      thumbnailUrl={getThumbnailByType('biblestudy')}
-                      type="biblestudy"
-                      parts={5}
+                      title="The Daily Blade: Faith Stories"
+                      description="Engaging interviews and discussions about real-life faith journeys and personal testimonies."
+                      thumbnailUrl={getThumbnailByType('podcast')}
+                      type="podcast"
+                      duration={45}
                     />
                     <ContentCard
-                      title="Morning Reflections: Psalms of Praise"
-                      description="Start your day with inspiration from the Psalms and guided prayer practices."
-                      thumbnailUrl={getThumbnailByType('devotional')}
-                      type="devotional"
-                      duration={10}
+                      title="Elevation Worship: Resurrecting"
+                      description="Uplifting contemporary worship music to enhance your personal devotion time."
+                      thumbnailUrl={getThumbnailByType('worship')}
+                      type="worship"
+                      duration={8}
                     />
                   </>
                 )}

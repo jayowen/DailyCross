@@ -36,7 +36,7 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="hidden md:block w-64 bg-gray-900 border-r border-amber-700/30 min-h-screen overflow-y-auto">
+    <aside className="hidden md:block w-64 min-w-64 flex-shrink-0 bg-gray-900 border-r border-amber-700/30 min-h-screen overflow-y-auto">
       <div className="p-6 sticky top-0">
         {/* User Profile */}
         <div className="mb-8">
