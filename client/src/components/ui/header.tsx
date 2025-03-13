@@ -68,32 +68,32 @@ export function Header() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="p-0 outline-none">
+              <Button variant="ghost" className="p-0 outline-none hover:bg-transparent">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-                    <span className="text-white text-sm font-semibold">
+                  <div className="w-8 h-8 rounded-full bg-amber-700 flex items-center justify-center border border-amber-500/30">
+                    <span className="text-amber-50 text-sm font-semibold">
                       {user?.displayName.split(' ').map(n => n[0]).join('').toUpperCase()}
                     </span>
                   </div>
-                  <span className="hidden md:inline font-medium">{user?.displayName}</span>
+                  <span className="hidden md:inline font-medium text-gray-300">{user?.displayName}</span>
                 </div>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end">
-              <DropdownMenuItem asChild>
+            <DropdownMenuContent className="w-56 bg-gray-900 border border-amber-700/30" align="end">
+              <DropdownMenuItem asChild className="focus:bg-gray-800 focus:text-amber-500">
                 <Link href="/my-growth">
-                  <a className="cursor-pointer flex w-full">My Profile</a>
+                  <a className="cursor-pointer flex w-full text-gray-300 hover:text-amber-500">My Profile</a>
                 </Link>
               </DropdownMenuItem>
               {user?.role === 'admin' && (
-                <DropdownMenuItem asChild>
+                <DropdownMenuItem asChild className="focus:bg-gray-800 focus:text-amber-500">
                   <Link href="/admin">
-                    <a className="cursor-pointer flex w-full">Admin Dashboard</a>
+                    <a className="cursor-pointer flex w-full text-gray-300 hover:text-amber-500">Admin Dashboard</a>
                   </Link>
                 </DropdownMenuItem>
               )}
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+              <DropdownMenuSeparator className="bg-gray-700" />
+              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer focus:bg-gray-800 focus:text-amber-500 text-gray-300 hover:text-amber-500">
                 Log Out
               </DropdownMenuItem>
             </DropdownMenuContent>
