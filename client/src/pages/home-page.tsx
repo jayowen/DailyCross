@@ -99,17 +99,17 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto">
             {/* Welcome Section */}
             <section className="mb-8">
-              <div className="p-6 bg-primary rounded-lg text-white mb-4">
-                <h1 className="font-merriweather text-2xl md:text-3xl font-bold mb-2">
+              <div className="p-6 bg-gray-900 rounded-lg text-white border border-amber-700/20 shadow-md mb-4">
+                <h1 className="text-2xl md:text-3xl font-bold mb-2 text-amber-50">
                   Welcome to Four12, {user?.displayName.split(' ')[0]}!
                 </h1>
-                <p className="opacity-90">Continue your spiritual journey where you left off.</p>
+                <p className="text-gray-300">Continue your spiritual journey where you left off.</p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <Button className="bg-white text-primary rounded-full px-4 py-2 text-sm font-medium flex items-center hover:bg-gray-100 transition-colors">
-                    <span className="material-icons mr-1 text-sm">play_arrow</span>
+                  <Button className="bg-gray-800 hover:bg-gray-700 text-amber-50 rounded-md px-4 py-2 text-sm font-medium flex items-center border border-amber-700/20 transition-colors">
+                    <span className="material-icons mr-1 text-sm text-amber-500">play_arrow</span>
                     Continue Today's Reading
                   </Button>
-                  <Button className="bg-accent text-white rounded-full px-4 py-2 text-sm font-medium flex items-center hover:bg-opacity-90 transition-colors">
+                  <Button className="bg-amber-600 text-white rounded-md px-4 py-2 text-sm font-medium flex items-center hover:bg-amber-500 transition-colors">
                     <span className="material-icons mr-1 text-sm">explore</span>
                     Find New Content
                   </Button>
@@ -148,9 +148,9 @@ export default function HomePage() {
             {/* Recommended Content Section */}
             <section className="mb-8">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="font-merriweather text-xl font-bold">Recommended For You</h2>
+                <h2 className="section-header">Recommended For You</h2>
                 <Link href="/sermons">
-                  <a className="text-secondary text-sm font-medium hover:underline">View All</a>
+                  <a className="text-amber-600 text-sm font-medium hover:text-amber-500 transition-colors">View All</a>
                 </Link>
               </div>
               
@@ -199,18 +199,18 @@ export default function HomePage() {
             {/* Community Section */}
             <section className="mb-8">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="font-merriweather text-xl font-bold">Community Activity</h2>
+                <h2 className="section-header">Community Activity</h2>
                 <Link href="/community">
-                  <a className="text-secondary text-sm font-medium hover:underline">View All</a>
+                  <a className="text-amber-600 text-sm font-medium hover:text-amber-500 transition-colors">View All</a>
                 </Link>
               </div>
               
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {/* Prayer Requests Column */}
-                <div className="lg:col-span-2 bg-white rounded-lg shadow-sm p-4">
+                <div className="lg:col-span-2 bg-white rounded-lg shadow-sm p-4 border border-gray-200">
                   <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-merriweather font-bold text-lg">Prayer Requests</h3>
-                    <Button className="text-white bg-secondary rounded-full px-3 py-1 text-sm font-medium hover:bg-opacity-90 transition-colors flex items-center">
+                    <h3 className="text-lg font-bold text-gray-900 border-b border-amber-700/10 pb-1">Prayer Requests</h3>
+                    <Button className="bg-amber-600 text-white rounded-md px-3 py-1 text-sm font-medium hover:bg-amber-500 transition-colors flex items-center">
                       <span className="material-icons text-sm mr-1">add</span>
                       New Request
                     </Button>
@@ -262,7 +262,7 @@ export default function HomePage() {
                     )}
                     
                     <Link href="/community">
-                      <a className="block text-center text-secondary hover:underline text-sm font-medium py-2">
+                      <a className="block text-center text-amber-600 hover:text-amber-500 transition-colors text-sm font-medium py-2">
                         View All Prayer Requests
                       </a>
                     </Link>
@@ -270,10 +270,10 @@ export default function HomePage() {
                 </div>
                 
                 {/* Discussion Forums Column */}
-                <div className="bg-white rounded-lg shadow-sm p-4">
+                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
                   <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-merriweather font-bold text-lg">Active Discussions</h3>
-                    <button className="text-secondary hover:text-accent transition-colors">
+                    <h3 className="text-lg font-bold text-gray-900 border-b border-amber-700/10 pb-1">Active Discussions</h3>
+                    <button className="text-amber-600 hover:text-amber-500 transition-colors">
                       <span className="material-icons">more_horiz</span>
                     </button>
                   </div>
@@ -326,7 +326,7 @@ export default function HomePage() {
                     )}
                     
                     <Link href="/community">
-                      <a className="block text-center text-secondary hover:underline text-sm font-medium py-2">
+                      <a className="block text-center text-amber-600 hover:text-amber-500 transition-colors text-sm font-medium py-2">
                         View All Discussions
                       </a>
                     </Link>
@@ -338,11 +338,11 @@ export default function HomePage() {
             {/* Upcoming Events Section */}
             <section>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="font-merriweather text-xl font-bold">Upcoming Church Events</h2>
-                <a href="#" className="text-secondary text-sm font-medium hover:underline">Calendar View</a>
+                <h2 className="section-header">Upcoming Church Events</h2>
+                <a href="#" className="text-amber-600 text-sm font-medium hover:text-amber-500 transition-colors">Calendar View</a>
               </div>
               
-              <div className="bg-white rounded-lg shadow-sm p-4">
+              <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
                 <div className="space-y-4">
                   {events && events.length > 0 ? (
                     events.map((event, index) => (
