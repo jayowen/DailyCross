@@ -9,7 +9,8 @@ import SermonsPage from "@/pages/sermons-page";
 import StoriesPage from "@/pages/stories-page";
 import WorshipPage from "@/pages/worship-page";
 import PodcastsPage from "@/pages/podcasts-page";
-import CommunityPage from "@/pages/community-page";
+import ChurchDirectoryPage from "@/pages/community-page";
+import ChurchDetailPage from "@/pages/church-detail-page";
 import BibleStudyPage from "@/pages/bible-study-page";
 import MyGrowthPage from "@/pages/my-growth-page";
 import AdminPage from "@/pages/admin-page";
@@ -24,7 +25,8 @@ function Router() {
       <ProtectedRoute path="/stories" component={StoriesPage} />
       <ProtectedRoute path="/worship" component={WorshipPage} />
       <ProtectedRoute path="/podcasts" component={PodcastsPage} />
-      <ProtectedRoute path="/community" component={CommunityPage} />
+      <ProtectedRoute path="/community" component={ChurchDirectoryPage} />
+      <ProtectedRoute path="/church/:id" component={ChurchDetailPage} />
       <ProtectedRoute path="/bible-study" component={BibleStudyPage} />
       <ProtectedRoute path="/my-growth" component={MyGrowthPage} />
       <ProtectedRoute path="/admin" component={AdminPage} />
