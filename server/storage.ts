@@ -5,7 +5,9 @@ import {
   discussions, type Discussion, type InsertDiscussion,
   events, type Event, type InsertEvent,
   achievements, type Achievement, type InsertAchievement,
-  userAchievements, type UserAchievement, type InsertUserAchievement
+  userAchievements, type UserAchievement, type InsertUserAchievement,
+  churches, type Church, type InsertChurch,
+  campuses, type Campus, type InsertCampus
 } from "@shared/schema";
 import session from "express-session";
 import createMemoryStore from "memorystore";
@@ -44,6 +46,13 @@ export interface IStorage {
   awardAchievement(userAchievement: InsertUserAchievement): Promise<UserAchievement>;
   getUserAchievements(userId: number): Promise<Achievement[]>;
   
+  // Church related methods
+  createChurch(church: InsertChurch): Promise<Church>;
+  getChurch(id: number): Promise<Church | undefined>;
+  getAllChurches(): Promise<Church[]>;
+  createCampus(campus: InsertCampus): Promise<Campus>;
+  getCampuses(churchId: number): Promise<Campus[]>;
+  
   // Session store
   sessionStore: session.SessionStore;
 }
@@ -56,6 +65,8 @@ export class MemStorage implements IStorage {
   private events: Map<number, Event>;
   private achievements: Map<number, Achievement>;
   private userAchievements: Map<number, UserAchievement>;
+  private churches: Map<number, Church>;
+  private campuses: Map<number, Campus>;
   
   currentUserId: number;
   currentContentId: number;
@@ -64,6 +75,8 @@ export class MemStorage implements IStorage {
   currentEventId: number;
   currentAchievementId: number;
   currentUserAchievementId: number;
+  currentChurchId: number;
+  currentCampusId: number;
   
   sessionStore: session.SessionStore;
 
@@ -75,6 +88,8 @@ export class MemStorage implements IStorage {
     this.events = new Map();
     this.achievements = new Map();
     this.userAchievements = new Map();
+    this.churches = new Map();
+    this.campuses = new Map();
     
     this.currentUserId = 1;
     this.currentContentId = 1;
@@ -83,6 +98,8 @@ export class MemStorage implements IStorage {
     this.currentEventId = 1;
     this.currentAchievementId = 1;
     this.currentUserAchievementId = 1;
+    this.currentChurchId = 1;
+    this.currentCampusId = 1;
     
     this.sessionStore = new MemoryStore({
       checkPeriod: 86400000,
@@ -293,6 +310,35 @@ export class MemStorage implements IStorage {
     
     return Array.from(this.achievements.values())
       .filter(achievement => userAchievementIds.includes(achievement.id));
+  }
+  
+  // Church methods
+  async createChurch(church: InsertChurch): Promise<Church> {
+    const id = this.currentChurchId++;
+    const timestamp = new Date();
+    const newChurch: Church = { ...church, id, createdAt: timestamp };
+    this.churches.set(id, newChurch);
+    return newChurch;
+  }
+  
+  async getChurch(id: number): Promise<Church | undefined> {
+    return this.churches.get(id);
+  }
+  
+  async getAllChurches(): Promise<Church[]> {
+    return Array.from(this.churches.values());
+  }
+  
+  async createCampus(campus: InsertCampus): Promise<Campus> {
+    const id = this.currentCampusId++;
+    const newCampus: Campus = { ...campus, id };
+    this.campuses.set(id, newCampus);
+    return newCampus;
+  }
+  
+  async getCampuses(churchId: number): Promise<Campus[]> {
+    return Array.from(this.campuses.values())
+      .filter(campus => campus.churchId === churchId);
   }
 }
 

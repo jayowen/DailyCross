@@ -150,3 +150,65 @@ export type InsertAchievement = z.infer<typeof insertAchievementSchema>;
 
 export type UserAchievement = typeof userAchievements.$inferSelect;
 export type InsertUserAchievement = z.infer<typeof insertUserAchievementSchema>;
+
+// Churches model
+export const churches = pgTable("churches", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description").notNull(),
+  location: text("location").notNull(),
+  logoUrl: text("logo_url"),
+  websiteUrl: text("website_url"),
+  denomination: text("denomination"),
+  numberOfCampuses: integer("number_of_campuses").default(1),
+  leadPastorName: text("lead_pastor_name").notNull(),
+  leadPastorBio: text("lead_pastor_bio"),
+  leadPastorImageUrl: text("lead_pastor_image_url"),
+  streamingUrl: text("streaming_url"),
+  streamingDays: text("streaming_days").array(),
+  streamingTimes: text("streaming_times").array(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const campuses = pgTable("campuses", {
+  id: serial("id").primaryKey(),
+  churchId: integer("church_id").notNull(),
+  name: text("name").notNull(),
+  address: text("address").notNull(),
+  city: text("city").notNull(),
+  state: text("state").notNull(),
+  zipCode: text("zip_code").notNull(),
+  serviceSchedule: text("service_schedule").array(),
+});
+
+export const insertChurchSchema = createInsertSchema(churches).pick({
+  name: true,
+  description: true,
+  location: true,
+  logoUrl: true,
+  websiteUrl: true,
+  denomination: true,
+  numberOfCampuses: true,
+  leadPastorName: true,
+  leadPastorBio: true,
+  leadPastorImageUrl: true,
+  streamingUrl: true,
+  streamingDays: true,
+  streamingTimes: true,
+});
+
+export const insertCampusSchema = createInsertSchema(campuses).pick({
+  churchId: true,
+  name: true,
+  address: true,
+  city: true,
+  state: true,
+  zipCode: true,
+  serviceSchedule: true,
+});
+
+export type Church = typeof churches.$inferSelect;
+export type InsertChurch = z.infer<typeof insertChurchSchema>;
+
+export type Campus = typeof campuses.$inferSelect;
+export type InsertCampus = z.infer<typeof insertCampusSchema>;
