@@ -101,7 +101,7 @@ export default function HomePage() {
             <section className="mb-8">
               <div className="p-6 bg-gray-900 rounded-lg text-white border border-amber-700/20 shadow-md mb-4">
                 <h1 className="text-2xl md:text-3xl font-bold mb-2 text-amber-50">
-                  Welcome to DailyCross.com, {user?.displayName.split(' ')[0]}!
+                  Welcome to The Daily Blade, {user?.displayName.split(' ')[0]}!
                 </h1>
                 <p className="text-gray-300">Continue your spiritual journey where you left off.</p>
                 <div className="mt-4 flex flex-wrap gap-3">
