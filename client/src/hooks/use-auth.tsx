@@ -66,7 +66,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLocation("/");
       toast({
         title: "Account created",
-        description: `Welcome to Four12, ${user.displayName}!`,
+        description: `Welcome to DailyCross.com, ${user.displayName}!`,
       });
     },
     onError: (error: Error) => {
