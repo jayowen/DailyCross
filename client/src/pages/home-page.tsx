@@ -261,10 +261,8 @@ export default function HomePage() {
                       </>
                     )}
                     
-                    <Link href="/community">
-                      <a className="block text-center text-amber-600 hover:text-amber-500 transition-colors text-sm font-medium py-2">
-                        View All Prayer Requests
-                      </a>
+                    <Link className="block text-center text-amber-600 hover:text-amber-500 transition-colors text-sm font-medium py-2" href="/community">
+                      View All Prayer Requests
                     </Link>
                   </div>
                 </div>
@@ -325,10 +323,8 @@ export default function HomePage() {
                       </>
                     )}
                     
-                    <Link href="/community">
-                      <a className="block text-center text-amber-600 hover:text-amber-500 transition-colors text-sm font-medium py-2">
-                        View All Discussions
-                      </a>
+                    <Link className="block text-center text-amber-600 hover:text-amber-500 transition-colors text-sm font-medium py-2" href="/community">
+                      View All Discussions
                     </Link>
                   </div>
                 </div>
