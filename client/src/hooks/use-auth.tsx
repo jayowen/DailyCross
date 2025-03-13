@@ -44,7 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLocation("/");
       toast({
         title: "Logged in successfully",
-        description: `Welcome back, ${user.displayName}!`,
+        description: `Welcome back to The Daily Blade, ${user.displayName}!`,
       });
     },
     onError: (error: Error) => {
@@ -66,7 +66,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLocation("/");
       toast({
         title: "Account created",
-        description: `Welcome to DailyCross.com, ${user.displayName}!`,
+        description: `Welcome to The Daily Blade, ${user.displayName}!`,
       });
     },
     onError: (error: Error) => {

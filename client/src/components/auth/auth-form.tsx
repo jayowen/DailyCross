@@ -71,10 +71,10 @@ export function AuthForm() {
       <Card className="w-full border-0 bg-transparent shadow-none">
         <CardHeader className="px-0">
           <CardTitle className="text-3xl font-merriweather text-center mb-3 text-white">
-            Welcome to <span className="text-amber-600">DailyCross.com</span>
+            Welcome to <span className="text-amber-600">The Daily Blade</span>
           </CardTitle>
           <CardDescription className="text-center text-gray-400 text-base mb-5">
-            {tab === "login" ? "Sign in to access your account" : "Join the DailyCross.com community today"}
+            {tab === "login" ? "Sign in to access your account" : "Join The Daily Blade community today"}
           </CardDescription>
           <TabsList className="grid grid-cols-2 w-full bg-gray-800/70 border border-gray-700">
             <TabsTrigger 
