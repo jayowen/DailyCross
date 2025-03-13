@@ -26,9 +26,9 @@ export default function AuthPage() {
         
         <div className="max-w-md relative z-10">
           <div className="flex items-center mb-8">
-            <span className="material-icons text-amber-600 text-5xl mr-3">church</span>
+            <span className="material-icons text-amber-600 text-5xl mr-3">military_tech</span>
             <div>
-              <h1 className="text-4xl font-merriweather font-bold">DailyCross.com</h1>
+              <h1 className="text-4xl font-merriweather font-bold">The Daily Blade</h1>
               <div className="h-1 w-24 bg-amber-600 mt-2"></div>
             </div>
           </div>

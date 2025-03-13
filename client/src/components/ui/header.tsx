@@ -21,7 +21,7 @@ export function Header() {
     <header className="bg-gray-900 text-white shadow-md border-b border-amber-700/30">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <span className="material-icons mr-2 text-amber-600">church</span>
+          <span className="material-icons mr-2 text-amber-600">military_tech</span>
           <h1 className="text-xl font-merriweather font-bold text-amber-50">The Daily Blade</h1>
         </div>
 

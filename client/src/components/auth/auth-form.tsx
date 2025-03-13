@@ -33,7 +33,7 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export function AuthForm() {
   const [tab, setTab] = useState<"login" | "register">("login");
-  const { loginMutation, registerMutation } = useAuth();
+  const { loginMutation, registerMutation, skipLogin } = useAuth();
   
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -224,6 +224,15 @@ export function AuthForm() {
             </Form>
           </TabsContent>
         </CardContent>
+        <CardFooter className="px-0 pt-4 flex justify-center">
+          <Button 
+            variant="outline" 
+            onClick={skipLogin} 
+            className="text-gray-400 hover:text-amber-500 border-gray-700 hover:border-amber-600/50 bg-transparent"
+          >
+            Continue as Guest
+          </Button>
+        </CardFooter>
       </Card>
     </Tabs>
   );

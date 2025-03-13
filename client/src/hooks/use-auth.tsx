@@ -16,6 +16,7 @@ type AuthContextType = {
   loginMutation: UseMutationResult<SelectUser, Error, LoginData>;
   logoutMutation: UseMutationResult<void, Error, void>;
   registerMutation: UseMutationResult<SelectUser, Error, InsertUser>;
+  skipLogin: () => void;
 };
 
 type LoginData = Pick<InsertUser, "username" | "password">;
@@ -99,6 +100,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
   });
 
+  // Function to skip login with a demo account
+  const skipLogin = () => {
+    const mockUser: SelectUser = {
+      id: 999,
+      username: "guest",
+      displayName: "Guest User",
+      password: "",
+      church: "Guest Church",
+      role: "user",
+      level: 3,
+      levelProgress: 65,
+      createdAt: new Date()
+    };
+    
+    queryClient.setQueryData(["/api/user"], mockUser);
+    setLocation("/");
+    toast({
+      title: "Demo mode activated",
+      description: "Welcome to The Daily Blade! You're browsing as a guest."
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -108,6 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loginMutation,
         logoutMutation,
         registerMutation,
+        skipLogin
       }}
     >
       {children}
